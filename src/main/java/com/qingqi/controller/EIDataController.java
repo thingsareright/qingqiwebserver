@@ -89,19 +89,20 @@ public class EIDataController {
     }
 
     /**
-     * 返回处于某一状态下的所有EI表的数据
-     * 接口格式（仍以本地服务器为例）：http://localhost:8080/ei/getEIofOneState?token=afhjjfl589451&state=1
+     * 返回处于某快递点且在某一状态下的所有EI表的数据
+     * 接口格式（仍以本地服务器为例）：http://localhost:8080/ei/getEIofOneState?token=afhjjfl589451&state=1&smsaddress=2
      * state参数意义：0表示轻骑看到通知，1表示轻骑已经取到货，2表示轻骑没有取到货
-     * 注意token的值是唯一的标识，需要高度保密
+     * TODO 注意token的值是唯一的标识，需要高度保密
      */
     @RequestMapping("/getEIofOneState")
-    public List<EI> getEIofOneState(@RequestParam(value = "token", required = false, defaultValue = "afhjjfl589451")String token,
-                                     @RequestParam(value = "state", required = false, defaultValue = "999")Long state){
-        if (!token.equals("afhjjfl589451") || state.equals("999")){
+    public List<EI> getEIofOneState(@RequestParam(value = "token", required = false, defaultValue = "111")String token,
+                                     @RequestParam(value = "state", required = false, defaultValue = "999") Long state,
+                                             @RequestParam(value = "smsaddress", required = false, defaultValue = "999")Long smsaddress){
+        if (!token.equals("111") || state.equals("999") || smsaddress.equals("999")){
             return new ArrayList<EI>();
         }
         List<EI> eiList = new ArrayList<>();
-        eiList = eiRepository.findAllByState(state);
+        eiList = eiRepository.findAllByStateAndSmsaddress(state,smsaddress);
         return eiList;
     }
 

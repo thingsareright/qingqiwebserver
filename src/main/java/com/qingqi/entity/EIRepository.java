@@ -21,9 +21,8 @@ public interface EIRepository extends JpaRepository<EI,Long>{
 
     //用于辅助后台查询，返回所有EI表中处于某种状态下的消息
     @Transactional
-    @Query("select p from EI p where p.state=:state")
     @Modifying
-    List<EI> withStateQuery(@Param("state")Long state);
+    List<EI> findAllByStateAndSmsaddress(Long state, Long smsaddress);
 
     //用户辅助用户查询自己的某条信息
     @Transactional
