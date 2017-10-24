@@ -16,8 +16,8 @@ import java.util.ArrayList;
 public class SmsController {
 
     //下面是一些必要的变量设置，这是机密，不能外传
-    private static final int APPID = 1400045100;
-    private static final String APPKEY = "138423efdb3e0dcb8669e0d1c6abc493";
+    private static final int APPID = 1234561265;
+    private static final String APPKEY = "145255453";
     private static final int SENDGETPACKAGEMESSAGE_TEMPLATE = 50689;   //腾讯云取货成功的短信模板ID
     private static final int SENDUNGETPACKAGEMESSAGE_TEMPLATE = 50690; ////腾讯云取货未成功的短信模板ID
 
