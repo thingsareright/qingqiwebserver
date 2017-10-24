@@ -98,7 +98,7 @@ public class EIDataController {
     public List<EI> getEIofOneState(@RequestParam(value = "token", required = false, defaultValue = "111")String token,
                                      @RequestParam(value = "state", required = false, defaultValue = "999") Long state,
                                              @RequestParam(value = "smsaddress", required = false, defaultValue = "999")Long smsaddress){
-        if (!token.equals("111") || state.equals("999") || smsaddress.equals("999")){
+        if (!token.equals(ConstantSecret.getToken()) || state.equals("999") || smsaddress.equals("999")){
             return new ArrayList<EI>();
         }
         List<EI> eiList = new ArrayList<>();
