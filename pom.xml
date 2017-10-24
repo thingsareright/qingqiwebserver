@@ -66,6 +66,13 @@
 			<groupId>org.thymeleaf.extras</groupId>
 			<artifactId>thymeleaf-extras-springsecurity4</artifactId>
 		</dependency>
+
+		<!-- 腾讯云短信依赖-->
+		<dependency>
+			<groupId>com.github.qcloudsms</groupId>
+			<artifactId>sms</artifactId>
+			<version>0.9.1</version>
+		</dependency>
 	</dependencies>
 
 	<build>
