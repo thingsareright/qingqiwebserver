@@ -99,14 +99,16 @@ public class UserDataController {
         if (tel.equals("00000000000") || password.equals("0000") )
             return "0";
         List<User> userList = new ArrayList<>();
-        userList = userRepository.findAllByTelAndPassword(tel, password);
+        userList = userRepository.findAllByTel(tel);
         if (userList.size() > 0){
             User user = userList.get(0);
             int flag = userRepository.updateUser(user.getTel(),password);
             if (flag == 0)
                 return "0";
+            System.out.println("*************1");
             return "1";
         }
+        System.out.println("*************2");
         return "0";
     }
 

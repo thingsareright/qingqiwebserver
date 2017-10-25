@@ -107,9 +107,9 @@ public class EIDataController {
     }
 
     /**
-     * 将某一条记录的状态由未领转变为其他两种状态之一
+     * 将某一条记录的状态由未领转变为其他几种状态之一
      * 接口格式（仍以本地服务器为例）：http://localhost:8080/ei/setEIofOneState?token=afhjjfl589451&id=1&state=1
-     * state参数意义：0表示轻骑未接单，1表示轻骑接单且在中午送货，2表示轻骑接单且在下午送货
+     * state参数意义：0表示轻骑未接单
      */
     @RequestMapping("/setEIofOneState")
     public Long setEIofOneState(@RequestParam(value = "token", required = false, defaultValue = "0")String token,
@@ -177,6 +177,25 @@ public class EIDataController {
                                       @RequestParam(value = "id", required = false, defaultValue = "-1")   Long id){
         //先判断参数是否足够
         if (usertel.equals("0") || password.equals("0") || id.longValue() == -1){
+            return new EI();
+        }
+        //取出对应的数据
+        EI ei = new EI();
+        ei = eiRepository.findById(id);
+        if (ei == null)     //以防万一
+            return new EI();
+        return ei;
+    }
+
+    /**
+     * 获取某一id对应的EI记录，供服务端调用
+     * 接口格式（仍以本地服务器为例）：http://localhost:8080/ei/getSingleEIDataByIdWithToken?token=111&id=1
+     * */
+    @RequestMapping("/getSingleEIDataByIdWithToken")
+    public EI getSingleEIDataByIdWithToken(@RequestParam(value = "token", required = false, defaultValue = "0")  String token,
+                                  @RequestParam(value = "id", required = false, defaultValue = "-1")   Long id){
+        //先判断参数是否足够
+        if (token.equals("0")  || id.longValue() == -1){
             return new EI();
         }
         //取出对应的数据
