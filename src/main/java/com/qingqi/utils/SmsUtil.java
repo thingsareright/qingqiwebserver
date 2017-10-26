@@ -11,12 +11,12 @@ import java.util.ArrayList;
 public class SmsUtil {
 
     //下面是一些必要的变量设置，这是机密，不能外传
-    private static final int APPID = 1400045100;
-    private static final String APPKEY = "138423efdb3e0dcb8669e0d1c6abc493";
-    private static final int SENDGETPACKAGEMESSAGE_TEMPLATE = 50912;   //腾讯云取货成功的短信模板ID
-    private static final int SENDUNGETPACKAGEMESSAGE_TEMPLATE = 50913; //腾讯云取货未成功的短信模板ID
-    private static final int SENDDISPATCHING_TEMPLATE = 50914;      //腾讯云配送中的模板ID
-    private static final int SENDCODE = 49912;       //腾讯云验证码模板
+    private static final int APPID = 0;
+    private static final String APPKEY = "0";
+    private static final int SENDGETPACKAGEMESSAGE_TEMPLATE = 0;   //腾讯云取货成功的短信模板ID
+    private static final int SENDUNGETPACKAGEMESSAGE_TEMPLATE = 0; //腾讯云取货未成功的短信模板ID
+    private static final int SENDDISPATCHING_TEMPLATE = 0;      //腾讯云配送中的模板ID
+    private static final int SENDCODE = 0;       //腾讯云验证码模板
 
     //封装发送短信的方法，供SmsController调用 ，调用成功返回字符串"1"，否则返回字符串"0"
     public static String sendgetpackage(String tel, String param1, String param2){
